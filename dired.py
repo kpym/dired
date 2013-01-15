@@ -3,7 +3,14 @@ from os import listdir, lstat
 from os.path import dirname, isdir, islink, join, realpath, relpath, commonprefix
 
 class DiredCommand(sublime_plugin.WindowCommand):
+	def __init__(self, *args, **kwargs):
+		sublime_plugin.WindowCommand.__init__(self, *args, **kwargs)
+		settings = sublime.load_settings('Dired Preferences.sublime-settings')
+		self.use_one_view = settings.get('use_one_view',True)
+
 	def find_view(self, directory):
+		if self.use_one_view and self.window.active_view().name().startswith("Dired: "):
+			self.window.run_command('close')
 		for v in self.window.views():
 			if "Dired: " + directory == v.name():
 				return self.init_view(v, directory)

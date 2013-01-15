@@ -2,7 +2,10 @@
 
 The main entry point is `Ctrl+Shift+d` which brings up a directory browser for the current directory (the directory of the current view).  You can then navigate to the next/previous line with the cursor keys, or with `n/p`, or with `j/k`.
 
-You can open the file on the current line with `Enter`.  If there is a directory on the current line, a new directory browser is created for that directory.
+You can open the file on the current line with `Enter`.  If there is a directory on the current line
+depending on settings (Dired Preferences.sublime-settings):
+	- a new browser view is created for that directory
+	- or the directory is opened in the current browser view
 
 # License
 
